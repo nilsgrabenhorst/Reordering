@@ -14,6 +14,14 @@ final class BoardModel {
         .building: ["Crazy idea"],
         .shipped: [],
     ]
+    
+    func cards(for ids: some Sequence<TaskCard.ID>) -> [TaskCard] {
+        let selectedIDs = Set(ids)
+        return cards
+            .values
+            .joined()
+            .filter { card in selectedIDs.contains(card.id) }
+    }
 }
 
 extension BoardModel: Reorderable {
