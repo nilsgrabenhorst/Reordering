@@ -116,18 +116,38 @@ import SwiftUI
 public protocol Reorderable {
     /// The type of the draggable/reorderable model items
     associatedtype Item
+    
+    /// The the type used as the identifier for an `Item`
+    ///
+    /// Defaults to `Item.ID` if `Item` conforms to `Identifiable`.
+    ///
+    /// - Note: Make sure to use the same identifier for the `ForEach`.
+    ///         If identifiers don't match, reorderable dragging will
+    ///         fail silently.
     associatedtype ItemID: Hashable & Sendable
 
     /// A type to identify each collection of `Item`s
     associatedtype CollectionID: Hashable & Sendable
-
-    func items(in collection: CollectionID) -> [Item]
-    func apply(_ difference: Diff)
-    var itemID: KeyPath<Item, ItemID> { get }
-}
-
-public extension Reorderable {
+    
     typealias Diff = ReorderDifference<ItemID, CollectionID>
+
+    /// All items in the collection
+    func items(in collection: CollectionID) -> [Item]
+    
+    /// Finish a drop by applying the given `defference`
+    ///
+    /// This method is called to finalise a drop. Update your model
+    /// to reflect the new order of items by appying the given `Diff`.
+    ///
+    /// - Parameters:
+    ///    - difference: An object containing the source and destination difference
+    func apply(_ difference: Diff)
+    
+    /// A keypath to read the identifier of an item
+    ///
+    /// Default implementation available if `Item` conforms to `Identifiable`,
+    /// where the `id` property is used.
+    var itemID: KeyPath<Item, ItemID> { get }
 }
 
 public extension Reorderable where Item: Identifiable, Item.ID: Hashable & Sendable {
