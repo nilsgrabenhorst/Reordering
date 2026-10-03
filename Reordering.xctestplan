@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "716DEFEA-3A2B-41C0-B59D-A50918731160",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true,
+    "testInteropMode" : "complete"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "ReorderingTests",
+        "name" : "ReorderingTests"
+      }
+    }
+  ],
+  "version" : 2
+}
