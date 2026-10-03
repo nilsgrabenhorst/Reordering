@@ -9,7 +9,6 @@ import Testing
 import CoreGraphics
 @testable import Reordering
 
-@MainActor
 @Suite("HorizontalSpan / VerticalSpan")
 struct SpanTests {
     @Test func `HorizontalSpan contains x value`() {

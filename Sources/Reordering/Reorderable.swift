@@ -112,7 +112,6 @@ import SwiftUI
 ///             }
 ///         }
 ///     }
-@MainActor
 public protocol Reorderable {
     /// The type of the draggable/reorderable model items
     associatedtype Item
