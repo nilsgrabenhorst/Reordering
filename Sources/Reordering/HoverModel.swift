@@ -51,7 +51,7 @@ final class HoverModel<CollectionID: Hashable> {
     }
 }
 
-struct HorizontalSpan {
+nonisolated struct HorizontalSpan {
     let span: ClosedRange<CGFloat>
 
     func contains(_ point: CGPoint) -> Bool {
@@ -63,7 +63,7 @@ struct HorizontalSpan {
     }
 }
 
-struct VerticalSpan {
+nonisolated struct VerticalSpan {
     let span: ClosedRange<CGFloat>
 
     func contains(_ point: CGPoint) -> Bool {
@@ -76,10 +76,10 @@ struct VerticalSpan {
 }
 
 extension CGRect {
-    var horizontalSpan: HorizontalSpan {
+    nonisolated var horizontalSpan: HorizontalSpan {
         HorizontalSpan(span: minX...maxX)
     }
-    var verticalSpan: VerticalSpan {
+    nonisolated var verticalSpan: VerticalSpan {
         VerticalSpan(span: minY...maxY)
     }
 }
